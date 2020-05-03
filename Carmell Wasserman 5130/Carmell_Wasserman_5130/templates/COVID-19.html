@@ -1,0 +1,130 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-color: rgb(153, 0, 0);
+    }
+</style>
+<div class="jumbotron">
+
+
+    <div dir="ltr">
+        <div class="Jumbotron">
+            <h1>COVID-19</h1>
+            <p>
+                the COVID-19 dataset includes a Province/State and it's Country/Region, a date, and how many confirmed cases, death cases, and recovered cases were in that Province/State and date.
+            </p>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> field name </th>
+                    <th> explanation </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Country/Region
+                    </td>
+                    <td>
+                        Name of a country/region.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Date
+                    </td>
+                    <td>
+                        The date of the report.
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        Confirmed
+                    </td>
+                    <td>
+                        The number of cases of people confirmed to have COVID-19.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Deaths</td>
+                    <td>
+                        The number of cases of people dead by COVID-19.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Recovered</td>
+                    <td>
+                        The number of cases of people who recovered from COVID-19.
+                    </td>
+                </tr>
+               
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .collapsible {
+            background-color: rgb(153, 0, 0);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: rgb(130, 0, 0);
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <button type="button" class="collapsible">DataSet</button>
+    <div class="content">
+        {{ raw_data_table | safe}}
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <p></p>
+</div>
+
+    {% endblock %}

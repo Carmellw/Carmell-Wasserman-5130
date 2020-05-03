@@ -1,0 +1,40 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-color: rgb(153, 0, 0);
+    }
+</style>
+<div class="jumbotron">
+
+
+    <h1>Data Model</h1>
+
+    <h2>
+        the following data about COVID-19 and the world population is being used to research which countries were affected the most (according to cases and death) by the coronavirus.
+    </h2>
+
+    <img src="https://www.eimsbuetteler-nachrichten.de/wp-content/uploads/2020/03/Corona-in-Hamburg-Eimsbuettel-Coronavirus-Virus-COVID-19-scaled.jpg" height="100">
+    <img src="https://images.globes.co.il/images/NewGlobes/big_image_800/2020/D52B40777550DAB1F7D77DCB661C1493_800x392.20200329T091314.jpg" height="100">
+    <img src="https://specials-images.forbesimg.com/imageserve/1203426591/960x0.jpg?cropX1=1126&cropX2=8882&cropY1=0&cropY2=4360" height="100">
+    <br>
+
+    <h2>COVID-19</h2>
+    <p>
+        the COVID-19 dataset includes a Province/State and it's Country/Region, a date, and how many confirmed cases, death cases, and recovered cases were in that Province/State and date.
+    </p>
+    <p><a class="btn btn-default" href="{{ url_for('COVID19') }}">to the COVID-19 dataset</a></p>
+
+
+    <h2>World Population</h2>
+    <p>
+        the world population dataset includes a country’s name and this country’s population in 2020.
+    </p>
+    <p><a class="btn btn-default" href="{{ url_for('population') }}">to the world population dataset</a></p>
+
+   
+
+</div>
+
+    {% endblock %}

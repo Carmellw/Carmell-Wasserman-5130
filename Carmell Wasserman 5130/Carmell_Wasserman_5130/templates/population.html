@@ -1,0 +1,110 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-color: rgb(153, 0, 0);
+    }
+</style>
+<div class="jumbotron">
+
+
+    <div dir="ltr">
+        <div class="Jumbotron">
+            <h1>World Population</h1>
+            <p>
+                the world population dataset includes a country’s name and this country’s population in 2020.
+            </p>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> field name </th>
+                    <th> explanation </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        Country (or dependency)
+                    </td>
+                    <td>
+                        Name of the country(or dependency).
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Population (2020)
+                    </td>
+                    <td>
+                        The number of civilians in the country in 2020.
+                    </td>
+
+                </tr>
+                
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .collapsible {
+            background-color: rgb(153, 0, 0);
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: rgb(130, 0, 0);
+            }
+
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+
+    <button type="button" class="collapsible">DataSet</button>
+    <div class="content">
+        {{ raw_data_table | safe}}
+    </div>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <p></p>
+</div>
+
+    {% endblock %}

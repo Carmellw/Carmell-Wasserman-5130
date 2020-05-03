@@ -1,0 +1,46 @@
+﻿ * Running on http://localhost:62399/ (Press CTRL+C to quit)
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET /static/content/bootstrap.min.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET /static/content/site.css HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET /static/scripts/modernizr-2.6.2.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET /static/scripts/jquery-1.10.2.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:55] "GET /static/scripts/bootstrap.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:56] "GET /static/scripts/respond.js HTTP/1.1" 200 -
+127.0.0.1 - - [19/Apr/2020 22:08:56] "GET /favicon.ico HTTP/1.1" 404 -
+[2020-04-19 22:08:57,450] ERROR in app: Exception on /register [GET]
+Traceback (most recent call last):
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\Carmell_Wasserman_5130\views.py", line 46, in register
+    message='Your application description page.'
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\templating.py", line 134, in render_template
+    context, ctx.app)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\flask\templating.py", line 116, in _render
+    rv = template.render(context)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\jinja2\environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\jinja2\environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\jinja2\_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\Carmell_Wasserman_5130\templates\register.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\Carmell_Wasserman_5130\templates\layout.html", line 36, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\Carmell_Wasserman_5130\templates\register.html", line 21, in block "content"
+    {{ form.csrf }}
+  File "C:\Users\User\source\repos\Carmell Wasserman 5130\Carmell Wasserman 5130\COVID-19\lib\site-packages\jinja2\environment.py", line 471, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'form' is undefined
+127.0.0.1 - - [19/Apr/2020 22:08:57] "GET /register HTTP/1.1" 500 -
+The program 'python.exe' has exited with code 1 (0x1).
