@@ -37,8 +37,7 @@ class UserRegistrationFormStructure(FlaskForm):
     password   = PasswordField('Pass word:  ' , validators = [DataRequired()])
     submit = SubmitField('Submit')
 
+class Adata(FlaskForm):
+    date = DateField('Date:' , format='%Y-%m-%d' , validators = [DataRequired])
+    submit = SubmitField('Submit')
 
-class Adataa(FlaskForm):
-    day= StringField('day:  ' , validators = [DataRequired()])
-    month= StringField('month:  ' , validators = [DataRequired()])
-    subnmit = SubmitField('submit')

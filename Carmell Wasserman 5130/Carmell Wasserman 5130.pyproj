@@ -48,7 +48,6 @@
     <Folder Include="Carmell_Wasserman_5130\static\content\" />
     <Folder Include="Carmell_Wasserman_5130\static\fonts\" />
     <Folder Include="Carmell_Wasserman_5130\static\Data\" />
-    <Folder Include="Carmell_Wasserman_5130\static\imgs\" />
     <Folder Include="Carmell_Wasserman_5130\static\scripts\" />
     <Folder Include="Carmell_Wasserman_5130\templates\" />
   </ItemGroup>

@@ -37,10 +37,11 @@ from Carmell_Wasserman_5130.Models.QueryFormStructure import UserRegistrationFor
 
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
-from Carmell_Wasserman_5130.Models.plot_service_functions import plot_to_img 
+from Carmell_Wasserman_5130.Models.plot_service_functions import plot_to_img
+from Carmell_Wasserman_5130.Models.QueryFormStructure import Adata 
+
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
-from Carmell_Wasserman_5130.Models.QueryFormStructure import Adataa
 
 
 @app.route('/')
@@ -183,18 +184,17 @@ def population():
     )
 @app.route('/Adata')
 def Adata():
-    form = Adataa(request.form)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\covid_19_clean_complete.csv'))
     df1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_by_country_2020.csv'))
     df= df.drop(['Province/State','Lat','Long'],1)
-    day=21
-    month=3
+    day=17
+    month=4
     country1= 'Israel'
     country2= 'Italy'
     country3= 'China'
     country4= 'Germany'
     country5= 'Canada'
-    cases= 'Deaths'
+    cases= 'Confirmed'
     date= str(month)+'/'+str(day)+'/20'
     df_date= df[(df['Date'])==date]
     df_date= df_date.groupby('Country/Region').sum()
@@ -216,9 +216,8 @@ def Adata():
 
     return render_template(
         'Adata.html',
-        img_under_construction = '/static/imgs/under_construction.png',
         chart = chart,
-        height = "300" ,
+        height = "750" ,
         width = "750"
 
     )
