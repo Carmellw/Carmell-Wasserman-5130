@@ -16,6 +16,96 @@
         This chart shows what is the percentage of people who were confirmd sick/dead/recoverd in a specific date, in 5 Countrys.
     </p>
 
+    <div class="jumbotron">
+        <form method=post>
+            {{ form1.csrf }}
+            {{ form1.csrf_token }}
+            <table>
+                <tr>
+                    <td>
+                        {{ form1.date.label }}
+                    </td>
+                    <td>
+                        {{ form1.date }}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        {{ form1.country1.label }}
+                    </td>
+                    <td>
+                        {{ form1.country1}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        {{ form1.country2.label }}
+                    </td>
+                    <td>
+                        {{ form1.country2}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        {{ form1.country3.label }}
+                    </td>
+                    <td>
+                        {{ form1.country3}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        {{ form1.country4.label }}
+                    </td>
+                    <td>
+                        {{ form1.country4}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        {{ form1.country5.label }}
+                    </td>
+                    <td>
+                        {{ form1.country5}}
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input submit">
+                            <input class="btn btn-primary" type="submit" value="submit">
+                        </div>
+                    <td>
+                    <td></td>
+                </tr>
+
+            </table>
+        </form>
+
+
+
+
+
+    </div>
+
     <div class="row">
 
         <div class="col-md-2">

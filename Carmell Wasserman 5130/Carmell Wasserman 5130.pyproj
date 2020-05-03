@@ -28,6 +28,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Carmell_Wasserman_5130\Models\Forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Carmell_Wasserman_5130\Models\LocalDatabaseRoutines.py">
       <SubType>Code</SubType>
     </Compile>

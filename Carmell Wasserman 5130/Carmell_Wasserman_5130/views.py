@@ -32,13 +32,14 @@ from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateFiel
 from wtforms import ValidationError
 
 from Carmell_Wasserman_5130.Models.QueryFormStructure import QueryFormStructure 
-from Carmell_Wasserman_5130.Models.QueryFormStructure import LoginFormStructure 
 from Carmell_Wasserman_5130.Models.QueryFormStructure import UserRegistrationFormStructure 
+from Carmell_Wasserman_5130.Models.QueryFormStructure import LoginFormStructure
+from Carmell_Wasserman_5130.Models.Forms import Adataa
 
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from Carmell_Wasserman_5130.Models.plot_service_functions import plot_to_img
-from Carmell_Wasserman_5130.Models.QueryFormStructure import Adata 
+
 
 db_Functions = create_LocalDatabaseServiceRoutines() 
 
@@ -184,6 +185,7 @@ def population():
     )
 @app.route('/Adata')
 def Adata():
+    form1 = Adataa(request.form)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\covid_19_clean_complete.csv'))
     df1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_by_country_2020.csv'))
     df= df.drop(['Province/State','Lat','Long'],1)
@@ -195,27 +197,37 @@ def Adata():
     country4= 'Germany'
     country5= 'Canada'
     cases= 'Confirmed'
-    date= str(month)+'/'+str(day)+'/20'
-    df_date= df[(df['Date'])==date]
-    df_date= df_date.groupby('Country/Region').sum()
-    df1= df1.groupby('Country (or dependency)').sum()
-    country1number=df_date.at[country1,cases]/df1.at[country1,'Population (2020)']*10
-    country2number=df_date.at[country2,cases]/df1.at[country2,'Population (2020)']*10
-    country3number=df_date.at[country3,cases]/df1.at[country3,'Population (2020)']*10
-    country4number=df_date.at[country4,cases]/df1.at[country4,'Population (2020)']*10
-    country5number=df_date.at[country5,cases]/df1.at[country5,'Population (2020)']*10
-    casess = [country1number, country2number,country3number, country4number, country5number]
-    index = [country1, country2, country3, country4, country5]
-    df = pd.DataFrame({cases: casess}, index=index)
-    ax = df.plot.bar(rot=0)
-    fig = plt.figure()
-    ax = fig.add_subplot(111)
-    df.plot(ax = ax , kind = 'bar')
-    chart = plot_to_img(fig)
+    chart= ''
+    #date= str(month)+'/'+str(day)+'/20'
+    if request.method == 'POST':
+        date = form1.date.data 
+        country1= form1.country1.data 
+        country2= form1.country2.data 
+        country3= form1.country3.data 
+        country4= form1.country4.data 
+        country5= form1.country5.data 
+        cases= form1.countries.data 
+        df_date= df[(df['Date'])==date]
+        df_date= df_date.groupby('Country/Region').sum()
+        df1= df1.groupby('Country (or dependency)').sum()
+        country1number=df_date.at[country1,cases]/df1.at[country1,'Population (2020)']*10
+        country2number=df_date.at[country2,cases]/df1.at[country2,'Population (2020)']*10
+        country3number=df_date.at[country3,cases]/df1.at[country3,'Population (2020)']*10
+        country4number=df_date.at[country4,cases]/df1.at[country4,'Population (2020)']*10
+        country5number=df_date.at[country5,cases]/df1.at[country5,'Population (2020)']*10
+        casess = [country1number, country2number,country3number, country4number, country5number]
+        index = [country1, country2, country3, country4, country5]
+        df = pd.DataFrame({cases: casess}, index=index)
+        ax = df.plot.bar(rot=0)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        df.plot(ax = ax , kind = 'bar')
+        chart = plot_to_img(fig)
     
 
     return render_template(
         'Adata.html',
+        form1=form1,
         chart = chart,
         height = "750" ,
         width = "750"
