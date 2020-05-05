@@ -189,8 +189,6 @@ def Adata():
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\covid_19_clean_complete.csv'))
     df1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_by_country_2020.csv'))
     df= df.drop(['Province/State','Lat','Long'],1)
-    
-    cases= 'Confirmed'
     chart= ''
     if request.method == 'POST':
         date = form1.date.data
@@ -198,7 +196,8 @@ def Adata():
         country2= form1.country2.data 
         country3= form1.country3.data 
         country4= form1.country4.data 
-        country5= form1.country5.data 
+        country5= form1.country5.data
+        cases= form1.cases.data 
         month= date.month
         day= date.day
         date= str(month)+'/'+str(day)+'/20'

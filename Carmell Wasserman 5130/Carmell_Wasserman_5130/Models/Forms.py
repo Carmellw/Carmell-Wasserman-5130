@@ -27,6 +27,8 @@ class Adataa(FlaskForm):
     country3 = StringField('country3:' , validators = [DataRequired()] )
     country4 = StringField('country4:' , validators = [DataRequired()] )
     country5 = StringField('country5:' , validators = [DataRequired()] )
+    cases = StringField('kind of case:' , validators = [DataRequired()] )
+
 
     submit = SubmitField('submit')
 
