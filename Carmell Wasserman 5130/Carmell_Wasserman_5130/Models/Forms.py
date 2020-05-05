@@ -21,12 +21,12 @@ from wtforms.validators import InputRequired
 
 class Adataa(FlaskForm):
 
-    date = DateField('Date:' , format='%Y-%m-%d' , validators = [DataRequired])
-    country1 = StringField('country1:' , validators = [DataRequired] )
-    country2 = StringField('country2:' , validators = [DataRequired] )
-    country3 = StringField('country3:' , validators = [DataRequired] )
-    country4 = StringField('country4:' , validators = [DataRequired] )
-    country5 = StringField('country5:' , validators = [DataRequired] )
+    date = DateField('Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
+    country1 = StringField('country1:' , validators = [DataRequired()] )
+    country2 = StringField('country2:' , validators = [DataRequired()] )
+    country3 = StringField('country3:' , validators = [DataRequired()] )
+    country4 = StringField('country4:' , validators = [DataRequired()] )
+    country5 = StringField('country5:' , validators = [DataRequired()] )
 
     submit = SubmitField('submit')
 

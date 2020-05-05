@@ -183,33 +183,31 @@ def population():
         year=datetime.now().year,
         message='Your application description page.'
     )
-@app.route('/Adata')
+@app.route('/Adata', methods=['GET', 'POST'])
 def Adata():
     form1 = Adataa(request.form)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\covid_19_clean_complete.csv'))
     df1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_by_country_2020.csv'))
     df= df.drop(['Province/State','Lat','Long'],1)
-    day=17
-    month=4
-    country1= 'Israel'
-    country2= 'Italy'
-    country3= 'China'
-    country4= 'Germany'
-    country5= 'Canada'
+    
     cases= 'Confirmed'
     chart= ''
-    #date= str(month)+'/'+str(day)+'/20'
     if request.method == 'POST':
-        date = form1.date.data 
+        date = form1.date.data
         country1= form1.country1.data 
         country2= form1.country2.data 
         country3= form1.country3.data 
         country4= form1.country4.data 
         country5= form1.country5.data 
-        cases= form1.countries.data 
+        month= date.month
+        day= date.day
+        date= str(month)+'/'+str(day)+'/20'
         df_date= df[(df['Date'])==date]
         df_date= df_date.groupby('Country/Region').sum()
         df1= df1.groupby('Country (or dependency)').sum()
+        y=df1.at[country1,'Population (2020)']*10
+        x=df_date.at[country1,cases]
+
         country1number=df_date.at[country1,cases]/df1.at[country1,'Population (2020)']*10
         country2number=df_date.at[country2,cases]/df1.at[country2,'Population (2020)']*10
         country3number=df_date.at[country3,cases]/df1.at[country3,'Population (2020)']*10
