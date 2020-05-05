@@ -18,14 +18,14 @@ class LocalDatabaseServiceRoutines(object):
 # Read users data into a dataframe
 # -------------------------------------------------------
     def ReadCSVUsersDB(self):
-        df = pd.read_csv(self.users)
+        df = pd.read_csv(self.UsersDataFile)
         return df
 
 # -------------------------------------------------------
 # Saves the DataFrame (input parameter) into the users csv
 # -------------------------------------------------------
     def WriteCSVToFile_users(self, df):
-        df.to_csv(self.users, index=False)
+        df.to_csv(self.UsersDataFile, index=False)
 
 # -------------------------------------------------------
 # Check if username is in the data file
