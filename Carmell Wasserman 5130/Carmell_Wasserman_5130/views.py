@@ -129,7 +129,7 @@ def login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+            return redirect('Adata')
         else:
             flash('Error in - Username and/or password')
    
@@ -200,7 +200,22 @@ def Adata():
         cases= form1.cases.data 
         month= date.month
         day= date.day
-        date= str(month)+'/'+str(day)+'/20'
+        if day>12:
+            year= date.year - 2000
+            strmonth= str(month)
+
+        else:
+            year= date.year
+            if month<10:
+                strmonth= '0'+str(month)
+            else:
+                strmonth= str(month)
+
+        if day<10:
+            strday= '0'+str(day)
+        else:
+            strday= str(day)
+        date= strmonth+'/'+strday+'/'+str(year)
         df_date= df[(df['Date'])==date]
         df_date= df_date.groupby('Country/Region').sum()
         df1= df1.groupby('Country (or dependency)').sum()
