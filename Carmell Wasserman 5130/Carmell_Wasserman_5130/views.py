@@ -114,7 +114,7 @@ def login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):#אם יש משתמש כזה והסיסמה נכונה למשתמש
             return redirect('Adata')
-        else: #אם יש בעיה בן שם משמתמש או הסיסימה
+        else: #אם יש בעיה בשם משמתמש או הסיסימה
             flash('Error in - Username and/or password')
    
     return render_template(
@@ -170,7 +170,7 @@ def population():
 @app.route('/Adata', methods=['GET', 'POST'])
 def Adata():
     form1 = Adataa(request.form)
-
+    r=1
     #קריאת מאגרי המידע
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\covid_19_clean_complete.csv'))
     df1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\population_by_country_2020.csv'))
@@ -208,6 +208,9 @@ def Adata():
     #כדי שלטבלה יהיה ערך מסויים
     chart= ''
 
+    
+
+
     if request.method == 'POST':#אם המשמתמש הגיש את הפרמטרים
 
         #הכנסת הפרמטרים למשתנים
@@ -219,49 +222,43 @@ def Adata():
         country5= form1.country5.data
         cases= form1.cases.data
 
-        #הכנסת ערכי תאריך למשתנים
+        #כנסת ערכי תאריך לתוך משתנים
         month= date.month
         day= date.day
         year= date.year
 
+        #בדיקה- האם יש מידע על התאריך
         if year!=2020 :
             flash('Error in - enter a date between 22/1/2020-12/5/2020')
+            r=1
    
         elif month>5:
             flash('Error in - enter a date between 22/1/2020-12/5/2020')
-
+            r=1
         elif month==1:
             if day<22:
                 flash('Error in - enter a date between 22/1/2020-12/5/2020')
+                r=1
+            else :
+                r=0
         elif month==5:
             if day>12:
                 flash('Error in - enter a date between 22/1/2020-12/5/2020')
-
+                r=1
+            else:
+                r=0
         else:
-
+            r=0
+        if r==0:
 
             #סידור תאריך
-        
-            if day>12:
-                year= date.year - 2000
-                strmonth= str(month)
-
-            else:
-                year= date.year
-                if month<10:
-                    strmonth= '0'+str(month)
-                else:
-                    strmonth= str(month)
-
-            if day<10:
-                strday= '0'+str(day)
-            else:
-                strday= str(day)
+            strmonth= str(date.month)
+            strday= str(date.day)
+            year= date.year-2000
             date= strmonth+'/'+strday+'/'+str(year)
+
+            #סידור מאגר המידע לפי התאריך
             df_date= df[(df['Date'])==date]
-
-
-            #סידור מאגרי מידע נכון לתאריך
             df_date= df_date.groupby('Country/Region').sum()
 
             #מציאת האחוזים לכול מדינה
@@ -290,4 +287,3 @@ def Adata():
         width = "750"
 
 )
-
