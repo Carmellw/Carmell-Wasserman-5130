@@ -191,6 +191,7 @@ def Adata():
                 countries.append(x);
                 print(x)
                 i=i+1
+                break
     l = countries
     J= ['Confirmed','Deaths','Recovered']
     m = list(zip(l, l))
