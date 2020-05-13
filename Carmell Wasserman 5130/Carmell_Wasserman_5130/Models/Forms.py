@@ -11,6 +11,9 @@ from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
 from wtforms.validators import InputRequired
 
+import datetime
+
+
 
 
 
@@ -21,13 +24,13 @@ from wtforms.validators import InputRequired
 
 class Adataa(FlaskForm):
 
-    date = DateField('Date:' , format='%Y-%m-%d' , validators = [DataRequired()])
-    country1 = StringField('country1:' , validators = [DataRequired()] )
-    country2 = StringField('country2:' , validators = [DataRequired()] )
-    country3 = StringField('country3:' , validators = [DataRequired()] )
-    country4 = StringField('country4:' , validators = [DataRequired()] )
-    country5 = StringField('country5:' , validators = [DataRequired()] )
-    cases = StringField('kind of case:' , validators = [DataRequired()] )
+    date = DateField('Date:' , format='%Y-%m-%d' , validators = [DataRequired()], default=datetime.datetime(2020, 4, 25))
+    country1 = SelectField('country1:  ' , validators = [DataRequired()])
+    country2 =  SelectField('country2:  ' , validators = [DataRequired()] )
+    country3 =  SelectField('country3:  ' , validators = [DataRequired()] )
+    country4 = SelectField('country4:  ' , validators = [DataRequired()] )
+    country5 = SelectField('country5:  ' , validators = [DataRequired()] )
+    cases = SelectField('kind of case:  ' , validators = [DataRequired()] )
 
 
     submit = SubmitField('submit')
